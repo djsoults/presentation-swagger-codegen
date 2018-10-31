@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoFixture;
 using Microsoft.AspNetCore.Mvc;
+using SwaggerCodegenAPI.Models;
 
 namespace SwaggerCodegenAPI.Controllers
 {
@@ -10,36 +9,35 @@ namespace SwaggerCodegenAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly IFixture _fixture;
+
+        public ValuesController(IFixture fixture)
         {
-            return new string[] {"value1", "value2"};
+            _fixture = fixture;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [HttpGet("Int")]
+        public ActionResult<int> GetInt()
         {
-            return "value";
+            return _fixture.Create<int>();
         }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        
+        [HttpGet("String")]
+        public ActionResult<string> GetString()
         {
+            return _fixture.Create<string>();
         }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        
+        [HttpGet("Date")]
+        public ActionResult<DateTime> GetDateTime()
         {
+            return DateTime.Now;
         }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        
+        [HttpPost("Date")]
+        public ActionResult<DateTime> BuildDateTime(DateBuilder model)
         {
+            return new DateTime(model.Year, model.Month, model.Day);
         }
     }
 }
