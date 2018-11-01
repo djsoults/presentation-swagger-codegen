@@ -148,6 +148,44 @@ export class ValuesService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
+    public apiValuesGuidGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public apiValuesGuidGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public apiValuesGuidGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public apiValuesGuidGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'text/plain',
+            'application/json',
+            'text/json'
+        ];
+        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set("Accept", httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        return this.httpClient.get<string>(`${this.basePath}/api/Values/Guid`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * 
+     * 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
     public apiValuesIntGet(observe?: 'body', reportProgress?: boolean): Observable<number>;
     public apiValuesIntGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<number>>;
     public apiValuesIntGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<number>>;
@@ -171,44 +209,6 @@ export class ValuesService {
         ];
 
         return this.httpClient.get<number>(`${this.basePath}/api/Values/Int`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiValuesStringGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public apiValuesStringGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public apiValuesStringGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public apiValuesStringGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/plain',
-            'application/json',
-            'text/json'
-        ];
-        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set("Accept", httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        return this.httpClient.get<string>(`${this.basePath}/api/Values/String`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

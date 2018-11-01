@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Configuration } from './configuration';
 
+import { PresentationService } from './api/presentation.service';
 import { ValuesService } from './api/values.service';
 
 @NgModule({
@@ -10,6 +11,7 @@ import { ValuesService } from './api/values.service';
   declarations: [],
   exports:      [],
   providers: [
+    PresentationService,
     ValuesService ]
 })
 export class ApiModule {
