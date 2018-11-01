@@ -13,7 +13,7 @@ export class GuidComponent implements OnInit {
   constructor(private valuesService: ValuesService) { }
 
   ngOnInit() {
-    this.valuesService.apiValuesStringGet().subscribe(x => this.myGuid = x);
+    this.valuesService.apiValuesGuidGet().subscribe(x => this.myGuid = x);
   }
 
 }
