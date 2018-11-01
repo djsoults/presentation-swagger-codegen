@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiModule, Configuration, ConfigurationParameters } from '../api';
 
-import {environment} from '../environments/environment';
+import { environment } from '../environments/environment';
 import { IntComponent } from './int/int.component';
 import { GuidComponent } from './guid/guid.component';
 import { DateComponent } from './date/date.component';
 
-export function apiConfigFactory (): Configuration {
+export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
     basePath: environment.apiBasePath,
   };
@@ -32,4 +32,5 @@ export function apiConfigFactory (): Configuration {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
