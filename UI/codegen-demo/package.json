@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "swagger-codegen": "swagger-codegen generate -i http://localhost:5000/swagger/v1/swagger.json -l typescript-angular -o src/api"
+    "swagger-codegen": "swagger-codegen generate -i http://localhost:5000/swagger/v1/swagger.json -l typescript-angular -o src/api",
+    "demo-js-library": "swagger-codegen generate -i http://localhost:5000/swagger/v1/swagger.json -l javascript -o demo-js",
+    "demo-dotnet-core": "swagger-codegen generate -i http://localhost:5000/swagger/v1/swagger.json -l aspnetcore -o demo-core"
   },
   "private": true,
   "dependencies": {
