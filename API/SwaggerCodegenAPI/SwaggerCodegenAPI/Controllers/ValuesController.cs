@@ -22,10 +22,10 @@ namespace SwaggerCodegenAPI.Controllers
             return _fixture.Create<int>();
         }
         
-        [HttpGet("String")]
-        public ActionResult<string> GetString()
+        [HttpGet("Guid")]
+        public ActionResult<Guid> GetGuid()
         {
-            return _fixture.Create<string>();
+            return Guid.NewGuid();
         }
         
         [HttpGet("Date")]
