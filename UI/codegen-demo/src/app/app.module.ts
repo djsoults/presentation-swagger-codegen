@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { IntComponent } from './int/int.component';
 import { GuidComponent } from './guid/guid.component';
 import { DateComponent } from './date/date.component';
+import { PresentationComponent } from './presentation/presentation.component';
 
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
@@ -22,7 +23,8 @@ export function apiConfigFactory(): Configuration {
     AppComponent,
     IntComponent,
     GuidComponent,
-    DateComponent
+    DateComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,

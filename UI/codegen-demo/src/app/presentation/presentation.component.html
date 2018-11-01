@@ -1,0 +1,6 @@
+<ul *ngIf="presentation">
+  <li>Presentation Name: {{presentation.presentationTitle}}</li>
+  <li>Presenter: {{presentation.presenterName}}</li>
+  <li>Start Time: {{presentation.startTime | date:'long'}}</li>
+  <li>Current Time: {{presentation.currentTime | date:'longTime'}}</li>
+</ul>
